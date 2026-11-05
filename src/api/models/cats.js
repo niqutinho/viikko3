@@ -16,3 +16,11 @@ export const catItems = [
     image: "https://loremflickr.com/320/240/cat",
   },
 ];
+
+export const addCat = (catData, filename) => {
+  const nextId = Math.max(0, ...catItems.map((cat) => cat.cat_id)) + 1;
+  const cat = { ...catData, cat_id: nextId, image: filename };
+  catItems.push(cat);
+
+  return cat;
+};

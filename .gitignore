@@ -1,2 +1,6 @@
 node_modules/
 .env
+
+# Ignore uploaded files but keep the uploads directory in version control.
+uploads/*
+!uploads/.gitkeep

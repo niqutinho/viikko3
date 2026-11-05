@@ -1,4 +1,4 @@
-import { catItems } from "../models/cats.js";
+import { addCat as saveCat, catItems } from "../models/cats.js";
 
 export const getCats = (req, res) => {
   res.json(catItems);
@@ -14,15 +14,15 @@ export const getCatById = (req, res) => {
   res.json(cat);
 };
 
-export const addCat = (req, res) => {
-  if (!req.body || typeof req.body !== "object" || Array.isArray(req.body)) {
-    return res.status(400).json({ message: "A cat object is required." });
+export const postCat = (req, res) => {
+  console.log("Cat form data:", req.body);
+  console.log("Uploaded cat file:", req.file);
+
+  if (!req.file) {
+    return res.status(400).json({ message: "A cat image file is required." });
   }
 
-  const nextId = Math.max(0, ...catItems.map((cat) => cat.cat_id)) + 1;
-  const cat = { ...req.body, cat_id: nextId };
-  catItems.push(cat);
-
+  const cat = saveCat(req.body, req.file.filename);
   res.status(201).json(cat);
 };
 
