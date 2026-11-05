@@ -13,6 +13,9 @@ npm run dev
 The server listens on port 3000 by default. Set `PORT` in a `.env` file to use
 a different port. For production mode, run `npm start`.
 
+Run `npm run lint` to check JavaScript with ESLint and `npm run format` to format
+`app.js` with Prettier.
+
 ## Endpoints
 
 - `GET /api/v1/cats` returns a cat object as JSON.
